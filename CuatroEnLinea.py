@@ -16,7 +16,10 @@ def ingresarSecuencia(secuencia):
     else:
         turno = "Jugador 2 debe ingresar una columna: "
     columna = int(input(turno))
+    if columna > 7 or columna < 1:
+        return -1
     secuencia.append(columna)
+    return 1
 
 def soltarFichaEnColumna(ficha, columna, tablero):
     for fila in range(6, 0, -1):
@@ -49,10 +52,14 @@ system("cls")
 while len(secuencia) < (7*6):
     dibujarTablero(tablero)
     print("\n\n")
-    ingresarSecuencia(secuencia)
-    system("cls")
-    completarTableroEnOrden(secuencia, tablero)
-    print("")
+    sec = ingresarSecuencia(secuencia)
+    if sec < 0:
+        print("\nNumero de columna inválida. Por favor, ingresar un número entre 1 y 7.\n")
+        system("pause")
+    else:
+        system("cls")
+        completarTableroEnOrden(secuencia, tablero)
+        print("")
     system("cls")
 dibujarTablero(tablero)
 print("\n\n")
