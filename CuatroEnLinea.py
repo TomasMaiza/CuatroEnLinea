@@ -10,16 +10,23 @@ def tableroVacio():
         [0, 0, 0, 0, 0, 0, 0]
     ]
 
+def columnaValida(columna):
+    if columna > 7 or columna < 1:
+        return -1
+    else:
+        return 1
+
 def ingresarSecuencia(secuencia):
     if len(secuencia) % 2 == 0:
         turno = "Jugador 1 debe ingresar una columna: "
     else:
         turno = "Jugador 2 debe ingresar una columna: "
     columna = int(input(turno))
-    if columna > 7 or columna < 1:
+    if (columnaValida(columna) == -1):
         return -1
-    secuencia.append(columna)
-    return 1
+    else:
+        secuencia.append(columna)
+        return 1
 
 def soltarFichaEnColumna(ficha, columna, tablero):
     for fila in range(6, 0, -1):
