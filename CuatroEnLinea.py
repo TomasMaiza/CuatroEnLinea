@@ -50,6 +50,29 @@ def dibujarTablero(tablero):
             print("{0} ".format(tablero[i][j]), end = "")
         print("")
 
+def contenidoColumna(nro_columna, tablero):
+    columna = []
+    for fila in tablero:
+        celda = fila[nro_columna-1]
+        columna.append(celda)
+    return columna
+
+def contenidoFila(nro_fila, tablero):
+    fila = tablero[nro_fila-1]
+    return fila
+
+def todasLasColumnas(tablero):
+    columnas = [None] * 7
+    for i in range(7):
+        columnas[i] = contenidoColumna((i+1), tablero)
+    return columnas
+
+def todasLasFilas(tablero):
+    filas = [None] * 6
+    for i in range(6):
+        filas[i] = contenidoFila((i+1), tablero)
+    return filas
+
 secuencia = []
 tablero = tableroVacio()
 system("cls")
@@ -69,5 +92,4 @@ while len(secuencia) < (7*6):
         print("")
     system("cls")
 dibujarTablero(tablero)
-print("\n\n")
-print("Fin del juego")
+print("\n\nFin del juego")
