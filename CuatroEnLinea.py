@@ -45,10 +45,13 @@ def completarTableroEnOrden(secuencia, tablero):
 
 
 def dibujarTablero(tablero):
+    print("+- - - - - - - -+")
     for i in range(6):
+        print("| ", end = "")
         for j in range(7):
             print("{0} ".format(tablero[i][j]), end = "")
-        print("")
+        print("|")
+    print("+---------------+")
 
 def contenidoColumna(nro_columna, tablero):
     columna = []
