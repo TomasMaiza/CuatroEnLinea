@@ -1,4 +1,5 @@
 from os import system
+import colorsys
 
 def tableroVacio():
     return [
@@ -43,13 +44,12 @@ def completarTableroEnOrden(secuencia, tablero):
     columna = secuencia[l-1]
     soltarFichaEnColumna(ficha, columna, tablero)
 
-
 def dibujarTablero(tablero):
     print("+- - - - - - - -+")
     for i in range(6):
         print("| ", end = "")
         for j in range(7):
-            print("{0} ".format(tablero[i][j]), end = "")
+           print("{0} ".format(tablero[i][j]), end = "")
         print("|")
     print("+---------------+")
 
