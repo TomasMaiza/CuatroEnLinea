@@ -1,0 +1,4 @@
+[
+  "test_columnas_tablero.py::test_contenido_columna",
+  "test_tablero_vacio.py::test_tablero_vacio_tiene_6_filas"
+]
