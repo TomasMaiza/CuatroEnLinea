@@ -1,4 +1,5 @@
 from os import system
+import colorsys
 
 def tableroVacio():
     return [
@@ -16,7 +17,7 @@ def columnaValida(columna):
     else:
         return 1
 
-def ingresarSecuencia(secuencia):
+'''def ingresarSecuencia(secuencia):
     if len(secuencia) % 2 == 0:
         turno = "Jugador 1 debe ingresar una columna: "
     else:
@@ -26,7 +27,8 @@ def ingresarSecuencia(secuencia):
         return -1
     else:
         secuencia.append(columna)
-        return 1
+        return 1'''
+        
 
 def soltarFichaEnColumna(ficha, columna, tablero):
     for fila in range(6, 0, -1):
@@ -34,21 +36,27 @@ def soltarFichaEnColumna(ficha, columna, tablero):
             tablero[fila-1][columna-1] = ficha
             return
 
-def completarTableroEnOrden(secuencia, tablero):
+def completarTableroEnOrden(secuencia, tablero, turno):
     l = len(secuencia)
-    if l % 2 == 0:
+    '''if l % 2 == 0:
         ficha = 2
     else:
+        ficha = 1'''
+    if (turno % 2 == 0):
         ficha = 1
+    else:
+        ficha = 2
     columna = secuencia[l-1]
     soltarFichaEnColumna(ficha, columna, tablero)
 
-
 def dibujarTablero(tablero):
+    print("+- - - - - - - -+")
     for i in range(6):
+        print("| ", end = "")
         for j in range(7):
-            print("{0} ".format(tablero[i][j]), end = "")
-        print("")
+           print("{0} ".format(tablero[i][j]), end = "")
+        print("|")
+    print("+---------------+")
 
 def contenidoColumna(nro_columna, tablero):
     columna = []
@@ -73,9 +81,20 @@ def todasLasFilas(tablero):
         filas[i] = contenidoFila((i+1), tablero)
     return filas
 
-secuencia = []
 tablero = tableroVacio()
-system("cls")
+secuencia = [1, 4, 2, 3, 1, 1, 2]
+i = 0
+while (i < len(secuencia)):
+    if(columnaValida(secuencia[i]) == (-1)):
+        print("Secuencia invalida")
+        break
+    else:
+        i += 1
+i = 0
+while (i < len(secuencia)):
+    completarTableroEnOrden([secuencia[i]], tablero, i)
+    i += 1
+'''system("cls")
 print("4 EN LINEA")
 system("pause")
 system("cls")
@@ -89,7 +108,7 @@ while len(secuencia) < (7*6):
     else:
         system("cls")
         completarTableroEnOrden(secuencia, tablero)
-        print("")
-    system("cls")
+        print("")'''
+    #system("cls")
 dibujarTablero(tablero)
-print("\n\nFin del juego")
+#print("\n\nFin del juego")
